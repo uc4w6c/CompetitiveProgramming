@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// B - Easy Linear Programming
-
+// C - Skill Up
+// TODO: 失敗しているからどこかのタイミングでもう一度やりたい
 struct book {
     int price;
     vector<int> pointList;

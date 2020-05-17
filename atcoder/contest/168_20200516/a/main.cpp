@@ -5,21 +5,23 @@ int main() {
     int N;
     cin >> N;
 
-    vector<int> a(N);
-    for (int i = 0; i < N; i++) {
-        cin >> a.at(i);
+    int n = N % 10;
+    switch (n) {
+        case 2:
+        case 4:
+        case 5:
+        case 7:
+        case 9:
+            cout << "hon";
+            return 0;
+        case 0:
+        case 1:
+        case 6:
+        case 8:
+            cout << "pon";
+            return 0;
+        case 3:
+            cout << "bon";
+            return 0;
     }
-    // 降順で並び替え
-    sort(a.begin(), a.end(), greater<int>());
-
-    int alice = 0;
-    int bob = 0;
-    for (int i = 0; i < N; i++) {
-        if (i % 2 == 0) {
-            alice += a.at(i);
-        } else {
-            bob += a.at(i);
-        }
-    }
-    cout << alice - bob;
 }
