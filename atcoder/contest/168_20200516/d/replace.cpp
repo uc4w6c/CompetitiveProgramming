@@ -15,12 +15,12 @@ struct Room {
 
 // 失敗したから修正したもの
 vector<Room> calc(vector<Way> ways, vector<Room>& rooms, int lastRoom, int nowRoom, int nowPoint) {
-    cout << "nowPoint:" << nowPoint << endl;
-    cout << "nowRoom:" << nowRoom << endl;
+    // cout << "nowPoint:" << nowPoint << endl;
+    // cout << "nowRoom:" << nowRoom << endl;
     // if (nowPoint > 2) return rooms;
 
     for (int i = 0; i < ways.size(); i++) {
-        cout << "i:" << i << endl;
+        // cout << "i:" << i << endl;
         if (ways.at(i).from != nowRoom && 
             ways.at(i).to != nowRoom) {
             continue;
@@ -32,8 +32,8 @@ vector<Room> calc(vector<Way> ways, vector<Room>& rooms, int lastRoom, int nowRo
         } else {
             nextRoom = ways.at(i).from;
         }
-        cout << "nextRoom:" << nextRoom << endl;
-        cout << "lastRoom:" << lastRoom << endl;
+        // cout << "nextRoom:" << nextRoom << endl;
+        // cout << "lastRoom:" << lastRoom << endl;
         if (lastRoom == nextRoom) {
             continue;
         }
