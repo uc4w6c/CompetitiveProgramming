@@ -1,56 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<string> BubbleSort(vector<string> A, int N);
-vector<string> SelectionSort(vector<string> A, int N);
+vector<int> InsertionSort(vector<int> A, int N, int G, int& cnt);
 
 // Shell Sort : シェルソート
 int main() {
     int N;
     cin >> N;
 
-    vector<string> A(N);
+    vector<int> A(N);
     for (int i = 0; i < N; i++) {
         cin >> A.at(i);
     }
 
-    auto bubble = BubbleSort(A, N);
-    for (int i = 0; i < N; i++) {
-        cout << bubble.at(i) << " ";
+    int cnt = 0;
+    int m = 2;
+    int G[m] = { 4, 1 };
+    for (int i = 0; i < m; i++) {
+        A = InsertionSort(A, N, G[i], cnt);
     }
-    cout  << endl << "Bubble" << endl;
 
-    auto selection = SelectionSort(A, N);
-    for (int i = 0; i < N; i++) {
-        cout << selection.at(i) << " ";
-    }
-    cout  << endl << "Stable" << endl;
+    cout << m << endl;
+    for (int i = 0; i < m; i++) cout << G[i] << " ";
+    cout << endl;
+    cout << cnt << endl;
+
+    for (int i = 0; i < N; i++) cout << A[i] << endl;
 }
 
-vector<string> BubbleSort(vector<string> A, int N) {
-    bool isContinue = true;
-    for (int i = 0; isContinue; i++) {
-        isContinue = false;
-        cout << i << endl;
-        for (int j = N - 1; j > 0; j--) {
-            if (A.at(j).at(1) < A.at(j - 1).at(1)) {
-                swap(A[j], A[j - 1]);
-                isContinue = true;
-            }
+vector<int> InsertionSort(vector<int> A, int N, int g, int& cnt) {
+    for (int i = g; i < N; i++) {
+        int v = A[i];
+        int j = i - g;
+        while (j >= 0 && A[j] > v) {
+            A[j + g] = A[j];
+            j = j - g;
+            cnt++;
         }
-    }
-    return A;
-}
-
-vector<string> SelectionSort(vector<string> A, int N) {
-    for (int i = 0; i < N; i++) {
-        int minj = i;
-        for (int j = i; j < N; j++) {
-            if (A.at(j).at(1) < A.at(minj).at(1)) {
-                minj = j;
-            }
-        }
-        swap(A[i], A[minj]);
+        A[j + g] = v;
     }
     return A;
 }
