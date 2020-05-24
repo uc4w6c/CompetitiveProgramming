@@ -7,4 +7,11 @@ int main() {
     double C = (double)B / (double)A;
 
     cout << C << endl;
+
+    if (100 == 1e2) {
+        cout << 100 << endl;
+    }
+    if (100 != 1e2) {
+        cout << "No 100" << endl;
+    }
 }

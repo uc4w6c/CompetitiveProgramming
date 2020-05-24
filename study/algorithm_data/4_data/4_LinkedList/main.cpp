@@ -65,10 +65,28 @@ void insert(int key) {
     x->prev = nil;
 }
 
-
-
-
-
 int main() {
+    int key, n, i;
+    int size = 0;
+    char com[20];
+    int np = 0, nd = 0;
+    scanf("%d", &n);
+    init();
+    for (i = 0; i < n; i++) {
+        scanf("%s%d", com, &key);
+        if (com[0] == 'i') { insert(key); np++; size++; }
+        else if (com[0] == 'd') {
+            if (strlen(com) > 6) {
+                if (com[6] == 'F') deleteFirst();
+                else if (com[6] == 'L') deleteLast();
+            } else {
+                deleteKey(key); nd++;
+            }
+            size--;
+        }
+    }
 
+    printList();
+
+    return 0;
 }
