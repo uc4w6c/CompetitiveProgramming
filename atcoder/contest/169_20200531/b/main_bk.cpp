@@ -2,11 +2,6 @@
 using namespace std;
 
 // 
-bool is_product_overflow(long long a, long long b) {
-    long long prod = a * b;
-    return (prod / b != a);
-}
-
 int main() {
     int N;
     cin >> N;
@@ -26,10 +21,6 @@ int main() {
                     break;
                 }
             } else {
-                if (is_product_overflow(total, A)) {
-                    total = MAX + 1;
-                    break;
-                }
                 total *= A;
             }
         }
@@ -39,14 +30,7 @@ int main() {
     }
     if (total > MAX) {
         cout << -1;
-        return 0;
+            return 0;
     }
     cout << total;
 }
-// 1000000000000000000
-// 999999999999999999
-
-// 100000000000000000 10
-
-// OK 1000000000000000000
-// NG 1000000000000000001

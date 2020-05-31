@@ -3,7 +3,9 @@ using namespace std;
 
 // 
 int main() {
-    int A, B;
+    long long A;
+    double B;
     cin >> A >> B;
-    cout << A * B;
+
+    cout << static_cast<long long>(A * B);
 }
