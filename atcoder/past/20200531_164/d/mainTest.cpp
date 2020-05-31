@@ -2,19 +2,15 @@
 using namespace std;
 
 // D - Multiple of 2019
-// これだとだめ。というか問題文の解釈を間違っている・・・
-int main() {
-    string S;
-    cin >> S;
+void calc(string S) {
     if (stoll(S) < 2019) {
-        cout << 0;
-        return 0;
+        // cout << 0;
+        return;
     }
     int size = S.length();
     long count = 0;
     for (int i = 0; i < size - 3; i++) {
         for (int j = 0; j < size - i - 3; j++) {
-            cout << S.substr(i, 4 + j) << endl;
             if (stoll(S.substr(i, 4 + j)) < 1000) {
                 continue;
             }
@@ -24,5 +20,16 @@ int main() {
             }
         }
     }
-    cout << count;
+    if (count != 0) {
+        cout << count;
+    }
+}
+
+
+int main() {
+    for (long i = 0; i < 200000; i++) {
+        // cout << "i:" << i << endl;
+        calc(to_string(i));
+        // cout << endl;
+    }
 }
