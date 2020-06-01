@@ -1,14 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 
-bool is_product_overflow(long long a, long long b) {
-
-	long prod = a * b;
-	
-	return (prod / b != a);
-}
-
+// 以下は通らない
 int main() {
     long long A;
     double B;

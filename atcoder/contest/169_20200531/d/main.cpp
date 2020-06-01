@@ -14,8 +14,14 @@ int main() {
     long tmp = N;
     long max = sqrt(N);
     for (long i = 2; i <= N; i++) {
-        if (tmp % i == 0) {
+        if (i > max) {
+            // これを超えたら最終値になるはず
+            count++;
+            break;
+        }
+        if (tmp % i == 0 && tmp / i > i) {
             tmp /= i;
+            long max = sqrt(tmp);
             count++;
         }
     }
