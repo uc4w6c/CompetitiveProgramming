@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 
+// 以下は出来ていない
 int main() {
     long N;
     cin >> N;
