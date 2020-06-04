@@ -33,7 +33,7 @@ int main() {
         }
     }
 
-    // long long all = (long long)r * g * b;
-    // cout << all - minus;
-    cout << ((long long)(r * g * b)) - minus;
+    long long all = (long long)r * g * b;
+    cout << all - minus;
+    // cout << ((long long)(r * g * b)) - minus;
 }
