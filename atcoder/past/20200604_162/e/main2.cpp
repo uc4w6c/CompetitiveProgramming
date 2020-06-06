@@ -1,44 +1,39 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
+typedef long long ll;
 
-int N, K;
-long long total = 0;
-// E - Sum of gcd of Tuples (Hard)
-int gcd(int a, int b) {
-    if (b == 0)
-        return a;
+// 以下参考
+// https://atcoder.jp/contests/abc162/submissions/14064492
 
-    return gcd(b, a % b);
+const ll modi = 1e9+7;
+ll binpow(ll a,ll b){
+	ll res  =1;
+	while(b>0){
+		if(b&1)
+			res = res*a%modi;
+		a= a*a%modi;
+		b>>=1;
+	}
+	return res;
 }
 
-// 再帰処理にする
-int sum(int n, int k) {
-    if (n == N) {
-        // cout << k << endl;
-        total += k;
-        return total;
-    }
-    for (int i = 1; i <= K; i++) {
-        int max;
-        // これ無理やりだな。初回だけどうしようかと思い暫定
-        if (k == 0) {
-            max = i;
-        } else {
-            max = gcd(k, i);
-        }
-        sum(n + 1, max);
-    }
-    return total;
-}
+int main(){
+	ll n,k;
+	cin >> n >>k;
+	ll dp[k+1];
+	memset(dp,0,sizeof(dp));
+	for(ll i =k;i>0;--i){
+		ll to_make = k/i;
+		dp[i] = binpow(to_make,n);
+		for(int j = 2;i*j<=k;j++){
+			dp[i]-=dp[i*j];
+		}
+	}
 
-// 一回普通に作るけど、この処理はかなり遅い。
-// Kは固定だからループの数は減らせる
-int main() {
-    cin >> N >> K;
-    sum(0, 0);
+	ll ans =0;
+	for(int i =1;i<=k;i++){
+		ans = (ans + i*dp[i]%modi)%modi;
+	}
+	cout << ans << endl;
 
-    long long modNum = (pow(10, 9) + 7); 
-    cout << (total % modNum);
 }
-// 10813692
-// 10813692
