@@ -2,6 +2,7 @@
 using namespace std;
 
 // Merge Sort - マージソート
+// できていない
 
 vector<int> merge(vector<int> A, int left, int mid, int right) {
     int n1 = mid - left;
