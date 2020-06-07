@@ -22,6 +22,7 @@ int main() {
         q.push(10 * x + x % 10);
         if (x % 10 != 9)
             q.push(10 * x + x % 10 + 1);
+        cout << q.back() << endl;
     }
     cout << q.front();
     return 0;
