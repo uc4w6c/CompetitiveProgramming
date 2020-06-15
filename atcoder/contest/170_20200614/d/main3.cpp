@@ -32,6 +32,7 @@ int main() {
     int count = 0;
     for (int i = 0; i < N; i++) {
         if (!result[i]) count++;
+        // if (!result[i]) cout << A[i] << endl;
     }
     cout << count;
 }
