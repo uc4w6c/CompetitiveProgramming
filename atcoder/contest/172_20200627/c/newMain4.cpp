@@ -44,11 +44,11 @@ int main() {
             int a;
             for (int j = aCount; j >= 0; j--) {
                 if (j == 0) {
-                    a = 0;
+                    a = K;
                 } else {
                     a = A[j - 1];
                 }
-                if (a + sum > K) continue;
+                if (sum > a) continue;
                 maxReadCount = max(i + (j + 1), maxReadCount);
                 break;
             }

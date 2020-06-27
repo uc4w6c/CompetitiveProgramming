@@ -9,7 +9,7 @@ int main() {
     cin >> N >> M >> K;
 
     int aCount = 0;
-    map<int, long long> A, B;
+    vector<long long> A(N);
     long long sum = 0;
     bool isMax = false;
     long long num;
@@ -41,16 +41,15 @@ int main() {
         }
         if (sum <= K) {
             if (sum > K) break;
-            int a;
-            for (int j = aCount; j >= 0; j--) {
-                if (j == 0) {
-                    a = 0;
-                } else {
-                    a = A[j - 1];
+            int aIndex = lower_bound(A.end(), A.begin(), sum) - A.begin();
+            cout << aIndex << endl;
+            if (A[aIndex] > sum) {
+                if (aIndex != 0) {
+                    aIndex--;
                 }
-                if (a + sum > K) continue;
-                maxReadCount = max(i + (j + 1), maxReadCount);
-                break;
+            }
+            if (A[aIndex] <= sum) {
+                maxReadCount = max(i + (aIndex + 1), maxReadCount);
             }
         }
     }
