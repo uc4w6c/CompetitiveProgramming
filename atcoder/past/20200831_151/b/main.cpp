@@ -11,6 +11,9 @@ int main() {
         cin >> A[i];
         sum += A[i];
     }
-    
-
+    if (sum + K >= M * N) {
+        cout << max((M * N - sum), 0);
+    } else {
+        cout << -1;
+    }
 }
