@@ -21,7 +21,9 @@ int main() {
     }
     int waCount = 0;
     for (auto itr = waCountMap.begin(); itr != waCountMap.end(); itr++) {
-        waCount += itr->second;
+        if (acMap.find(itr->first) != acMap.end()) {
+            waCount += itr->second;
+        }
     }
     cout << acMap.size() << " " << waCount;
 }
