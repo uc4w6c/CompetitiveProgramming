@@ -22,21 +22,23 @@ int main() {
             while (!q.empty())  {
                 int x = q.front().first, y = q.front().second;
                 q.pop();
+                // 全方向を試す(dirには四方の値が入ってる)
                 for(int k = 0; k < 4; k++) {
                     int ni = x + dir[k][0], nj = y + dir[k][1];
-                    if (ni < 0 || ni >= h || nj < 0 || nj >= w || s[ni][nj] == '#' || dist[ni][nj] != INF) 
+                    if (ni < 0 || ni >= h || nj < 0 || nj >= w ||
+                        s[ni][nj] == '#' || dist[ni][nj] != INF) 
                         continue;
                     dist[ni][nj] = dist[x][y] + 1;
                     q.push({ni,nj});
                 }
             } 
-        for(int i=0;i<h;i++) {
-            for(int j=0;j<w;j++) {
-                if (dist[i][j] == INF) continue;
-                ans = max(ans, dist[i][j]);
+            for(int i=0;i<h;i++) {
+                for(int j=0;j<w;j++) {
+                    if (dist[i][j] == INF) continue;
+                    ans = max(ans, dist[i][j]);
+                }
             }
         }
-      }
     }
     cout << ans << endl;
 }
