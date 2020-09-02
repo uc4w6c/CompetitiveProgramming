@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// これだとWAになる・・・
 int main() {
     int N, M;
     cin >> N >> M;
