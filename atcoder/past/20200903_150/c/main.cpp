@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// これはsegmentation fault になる
 int N;
 int routedCount = 0;
 int a, b;
@@ -14,20 +13,20 @@ void calc(vector<bool> passed, vector<int> route, int passedCount) {
         bool isA = true, isB = true;
         for (int i = 0; i < N; i++) {
             if (!isA && !isB) return;
-            if (route[i] + 1 != P[i]) isA = false;
-            if (route[i] + 1 != Q[i]) isB = false;
+            if (route[i] != P[i]) isA = false;
+            if (route[i] != Q[i]) isB = false;
         }
-        if (isA) a = passedCount;
-        if (isB) b = passedCount;
+        if (isA) a = routedCount;
+        if (isB) b = routedCount;
         return;
     }
 
     for (int i = 0; i < N; i++) {
         if (passed[i]) continue;
-        passedCount++;
         passed[i] = true;
         route[passedCount] = i + 1;
         calc(passed, route, passedCount + 1);
+        passed[i] = false;
     }
 }
 
