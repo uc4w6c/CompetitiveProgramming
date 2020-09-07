@@ -14,7 +14,9 @@ int main() {
     vector<bool> winList(N, false);
     for (int i = 0; i < N; i++) {
         if (i >= K) {
-            if (T[i - K] == T[K] && winList[i - K]) {
+            // cout << i << ":" << T[i - K] << "," << T[K] << endl;
+            // cout << i - K << ":" << winList[i - K] << endl;
+            if (T[i - K] == T[i] && winList[i - K]) {
                 winList[i] = false;
                 // cout << i << endl; // debug
                 continue;
@@ -35,6 +37,7 @@ int main() {
                 break;
             }
         }
+        // cout << score << endl; // debug
         winList[i] = true;
     }
     cout << score;
