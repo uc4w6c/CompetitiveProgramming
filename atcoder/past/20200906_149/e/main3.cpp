@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// TLEになる
+// TLE&REになる
 int main() {
     int N;
     long long M;
@@ -10,21 +10,20 @@ int main() {
     for (int i = 0; i < N; i++) {
         cin >> A[i];
     }
-    priority_queue<int> result;
+    vector<int> result(N * N);
 
-    // ここで省略する
     for (int i = 0; i < N; i++) {
-        result.push(A[i] * 2);
+        result.push_back(A[i] * 2);
         for (int j = i + 1; j < N; j++) {
-            result.push(A[i] + A[j]);
-            result.push(A[i] + A[j]);
+            result.push_back(A[i] + A[j]);
+            result.push_back(A[i] + A[j]);
         }
     }
 
+    sort(result.begin(), result.end(), greater<int>());
     long long happyPoint = 0;
     for (int i = 0; i < M; i++) {
-        happyPoint += result.top();
-        result.pop();
+        happyPoint += result[i];
     }
     cout << happyPoint;
 }
