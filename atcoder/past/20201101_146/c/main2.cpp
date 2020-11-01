@@ -31,10 +31,8 @@ long long calc(long long left, long long right, int maxNumOfDigit, bool isFirst)
         else return left;
     }
 
-    int numOfDigit = maxNumOfDigit;
-    if (isFirst) numOfDigit - 1;
-    if (X < midX) return calc(left, mid, numOfDigit, false);
-    else return calc(mid, right, numOfDigit, false);
+    if (X < midX) return calc(left, mid, maxNumOfDigit, false);
+    else return calc(mid, right, maxNumOfDigit, false);
 };
 
 int main() {
@@ -58,13 +56,6 @@ int main() {
     long long N = calc(maxN / 10, maxN, maxNumOfDigit, true);
     if (N > 1000000000) cout << 1000000000;
     else cout << N;
-    /*
-    long long numOfDigit = 1;
-    long long tmpN = N;
-    while (tmpN < 1) {
-        tmpN /= 10;
-        numOfDigit++;
-    }
-    cout << (A * N + B * numOfDigit);
-    */
 }
+// 1000000000
+// 1000000000000000000
