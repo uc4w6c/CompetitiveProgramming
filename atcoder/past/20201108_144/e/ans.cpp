@@ -16,8 +16,8 @@ int main() {
     sort(A.begin(), A.end());
     sort(F.rbegin(), F.rend());
 
-    long long lf = -1;
-    long long rg = 1LL << 60;
+    long long lf = -1; // 最低得点
+    long long rg = 1LL << 60; // 最大得点
     while (rg - lf > 1) {
         long long mid = (lf + rg) / 2;
         long long cnt = 0;
