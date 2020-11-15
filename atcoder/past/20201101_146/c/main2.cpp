@@ -40,6 +40,7 @@ int main() {
 
     int maxNumOfDigit = 1;
     long long maxN = 1;
+    if ()
     while (true) {
         if (A * maxN + B * maxNumOfDigit == X) {
             cout << X;
