@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// これだとTLEになってしまう。
+// 最初から全部の答えを算出するパターン
+// これもTLEになった・・・
 int N, M;
 long long L;
 
@@ -11,6 +12,7 @@ struct ToCost {
 };
 
 map<int, vector<ToCost>> pointMap;
+int ans[301][301];
 
 int minCost;
 bool isArrived;
@@ -68,31 +70,39 @@ int main() {
     }
     */
 
+    for (int i = 1; i <= N - 1; i++) {
+        for (int j = i + 1; j <= N; j++) {
+            minCost = 0;
+            isArrived = false;
+            vector<bool> routed(N + 1, false); 
+            routed[i] = true;
+            for (ToCost toCost : pointMap[i]) {
+                if (toCost.toPoint == j) {
+                    isArrived = true;
+                    minCost = 0;
+                    break;
+                }
+
+                routed[toCost.toPoint] = true;
+                calc(toCost.toPoint, j, 0, L - toCost.cost, routed);
+                routed[toCost.toPoint] = false;
+            }
+
+            if (isArrived) {
+                ans[i][j] = minCost;
+                ans[j][i] = minCost;
+            } else {
+                ans[i][j] = -1;
+                ans[j][i] = -1;
+            }
+        }
+    }
+
     int Q;
     cin >> Q;
     int S, T;
     for (int i = 0; i < Q; i++) {
         cin >> S >> T;
-        minCost = 0;
-        isArrived = false;
-        vector<bool> routed(N + 1, false); 
-        routed[S] = true;
-        for (ToCost toCost : pointMap[S]) {
-            if (toCost.toPoint == T) {
-                isArrived = true;
-                minCost = 0;
-                break;
-            }
-
-            routed[toCost.toPoint] = true;
-            calc(toCost.toPoint, T, 0, L - toCost.cost, routed);
-            routed[toCost.toPoint] = false;
-        }
-
-        if (isArrived) {
-            cout << minCost << endl;
-        } else {
-            cout << -1 << endl;
-        }
+        cout << ans[S][T] << endl;
     }
 }
